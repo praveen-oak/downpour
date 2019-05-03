@@ -1,5 +1,5 @@
 
-TRAINING_SIZE = 30000
+TRAINING_SIZE = 4000
 
 # class MessageType(Enum):
 # 	INIT_HANDSHAKE = 1
