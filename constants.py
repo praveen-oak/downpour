@@ -1,0 +1,8 @@
+
+TRAINING_SIZE = 1000
+
+# class MessageType(Enum):
+# 	INIT_HANDSHAKE = 1
+# 	RETURN_HANDSHAKE = 2
+# 	SEND_GRADIENT = 3
+# 	RECEIVE_GRADIENT = 3
