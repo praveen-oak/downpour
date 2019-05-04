@@ -1,10 +1,10 @@
 #!/bin/bash
 
-#SBATCH --job-name=lab4i
+#SBATCH --job-name=4_workers_2_steps
 #SBATCH --nodes=5
 #SBATCH --ntasks-per-node=1
-#SBATCH --output=lab4.out
-#SBATCH --error=lab4.error
+#SBATCH --output=/home/ppo208/lab4/output/4_workers_2_steps.out
+#SBATCH --error=/home/ppo208/lab4/output/4_workers_2_steps.error
 #SBATCH --cpus-per-task=1
 #SBATCH --time=02:00:00
 
