@@ -5,7 +5,6 @@ import time
 import csv
 import random
 import pandas as pd
-#from torch import np
 import numpy as np
 import math
 import torch
@@ -109,13 +108,11 @@ class AverageMeter(object):
 
 
 def run_mpi_worker(train_data, img_path, img_ext, model, workers, rank, world_size,workers_group, steps, batch_size=250):
-
     t_exec = time.monotonic()
     transformations = transforms.Compose([transforms.Resize(32), transforms.ToTensor()])
 
     chunk_size = constants.TRAINING_SIZE/(world_size-1)
     dset_train = KaggleAmazonDataset(train_data, img_path, img_ext,rank, chunk_size, transformations)
-
 
     train_loader = DataLoader(dset_train,
                               batch_size=batch_size,
@@ -137,8 +134,6 @@ def run_mpi_worker(train_data, img_path, img_ext, model, workers, rank, world_si
     precisions_1 = AverageMeter()
     precisions_k = AverageMeter()
 
-    total_updates = 0
-
     for epoch in range(5):
         model.train()        
 
@@ -151,7 +146,6 @@ def run_mpi_worker(train_data, img_path, img_ext, model, workers, rank, world_si
         total_steps = 0
         grad_tensor = init_grad_tensor(model)
 
-        # print('---CLIENT {}--- :Starting epoch {} . Loss: {:.3f},\n'.format(rank, epoch, losses.avg))
 
         t_train = time.monotonic()
         t_batch = time.monotonic()
@@ -195,7 +189,6 @@ def run_mpi_worker(train_data, img_path, img_ext, model, workers, rank, world_si
             t_batch = time.monotonic()
 
             if total_steps % steps == 0:
-                total_updates = total_updates + 1
                 temp_tensor = serialize_grad_tensor(grad_tensor)
                 dist.send(tensor=temp_tensor, dst=0)
                 dist.recv(tensor=temp_tensor)
@@ -212,11 +205,8 @@ def run_mpi_worker(train_data, img_path, img_ext, model, workers, rank, world_si
         dist.send(tensor=temp_tensor, dst=0)
         dist.recv(tensor=temp_tensor)
         deserialize_model_params(model, temp_tensor, grads=False)
-        total_updates = total_updates + 1
-
 
     exec_time = time.monotonic() - t_exec
-    print('---CLIENT {} -- : Batches per worker : {}'.format(rank, temp_index))
     print('---CLIENT {} --- : Last epoch stats : Loss: {:.3f}, Prec@1: {:.3f}, Prec@3: {:.3f}, total_exec_time = {:.3f}'.format(rank, losses.avg, precisions_1.avg, precisions_k.avg, exec_time))
 
     loss_tensor = torch.tensor(samples_seen * losses.avg)
@@ -232,24 +222,23 @@ def run_mpi_worker(train_data, img_path, img_ext, model, workers, rank, world_si
     prec_1 = torch.div(prec_1_tensor, samples_seen_tensor)
     prec_3 = torch.div(prec_3_tensor, samples_seen_tensor)
 
-    print("---CLIENT {} --- : Total updates are {}".format(rank, total_updates))
     print("---CLIENT {} --- : All reduce results weighted_loss = {:.3f}, precision_1 = {:.3f}, precision_3 = {:.3f}".format(rank, weighted_loss, prec_1, prec_3))
     print("---CLIENT {} --- : Done with processing for worker. EXITING")
 
 def run_server(world_size, batch_size, model, steps):
-    samples_per_worker = constants.TRAINING_SIZE/batch_size
-    batches_per_worker = math.ceil(samples_per_worker/(world_size-1))
-    updates_per_worker = (batches_per_worker/steps + 1) * 5 #five epochs
+    samples_per_worker = constants.TRAINING_SIZE/(world_size-1)
+    batches_per_worker = math.ceil(samples_per_worker/batch_size)
+    updates_per_worker = (math.ceil(batches_per_worker/steps) + 1) * 5 #five epochs
     total_updates = updates_per_worker*(world_size-1)
 
 
     optimizer = optim.Adam(model.parameters(), lr=0.01)
     criterion = nn.BCELoss().to(device=device)
 
-    print("Samples per worker = {}, batches_per_worker = {}, updates_per_worker = {}")
+    print("---SERVER--- : Samples per worker = {}, batches_per_worker = {}, updates_per_worker = {}, total_updates = {}".format(samples_per_worker, batches_per_worker, updates_per_worker, total_updates))
     temp_tensor = serialize_model(model, grads=True)
     updates = 0
-    while True:
+    while updates < total_updates:
         optimizer.zero_grad()
         sender = dist.recv(tensor=temp_tensor)
         deserialize_model_params(model, temp_tensor, grads=True)
@@ -339,6 +328,7 @@ if __name__ == '__main__':
     workers_group = dist.new_group(ranks=mpi_workers_list)
     model = Net().to(device=device)
 
+    torch.multiprocessing.set_start_method('spawn')
     for param in model.parameters():
         param.grad = torch.zeros(param.size(), requires_grad=True)
         param.grad.data.zero_()
