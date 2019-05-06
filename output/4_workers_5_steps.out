@@ -1,0 +1,47 @@
+---SERVER--- : Samples per worker = 7500.0, batches_per_worker = 30, updates_per_worker = 35, total_updates = 140
+--------------------------------------------------------------------------
+A process has executed an operation involving a call to the
+"fork()" system call to create a child process.  Open MPI is currently
+operating in a condition that could result in memory corruption or
+other system errors; your job may hang, crash, or produce silent
+data corruption.  The use of fork() (or system() or other calls that
+create child processes) is strongly discouraged.
+
+The process that invoked fork was:
+
+  Local host:          [[48381,1],2] (PID 23804)
+
+If you are *absolutely sure* that your application will successfully
+and correctly survive a call to fork(), you may disable this warning
+by setting the mpi_warn_on_fork MCA parameter to 0.
+--------------------------------------------------------------------------
+---CLIENT 1 --- : Training Epoch: 0 done.  Loss: 0.339, Prec@1: 0.870, Prec@3: 0.580, train_time = 82.207 
+
+---CLIENT 2 --- : Training Epoch: 0 done.  Loss: 0.347, Prec@1: 0.861, Prec@3: 0.582, train_time = 86.703 
+
+---CLIENT 4 --- : Training Epoch: 0 done.  Loss: 0.323, Prec@1: 0.856, Prec@3: 0.585, train_time = 95.708 
+
+---CLIENT 3 --- : Training Epoch: 0 done.  Loss: 0.323, Prec@1: 0.878, Prec@3: 0.602, train_time = 105.689 
+
+---CLIENT 1 --- : Training Epoch: 1 done.  Loss: 0.246, Prec@1: 0.921, Prec@3: 0.635, train_time = 82.185 
+
+---CLIENT 2 --- : Training Epoch: 1 done.  Loss: 0.244, Prec@1: 0.923, Prec@3: 0.647, train_time = 89.857 
+
+---CLIENT 4 --- : Training Epoch: 1 done.  Loss: 0.245, Prec@1: 0.917, Prec@3: 0.639, train_time = 97.080 
+
+---CLIENT 3 --- : Training Epoch: 1 done.  Loss: 0.240, Prec@1: 0.927, Prec@3: 0.644, train_time = 107.622 
+
+---CLIENT 1 --- : Training Epoch: 2 done.  Loss: 0.243, Prec@1: 0.925, Prec@3: 0.639, train_time = 82.530 
+
+---CLIENT 2 --- : Training Epoch: 2 done.  Loss: 0.244, Prec@1: 0.923, Prec@3: 0.645, train_time = 89.178 
+
+---CLIENT 4 --- : Training Epoch: 2 done.  Loss: 0.244, Prec@1: 0.925, Prec@3: 0.640, train_time = 97.142 
+
+---CLIENT 3 --- : Training Epoch: 2 done.  Loss: 0.241, Prec@1: 0.925, Prec@3: 0.643, train_time = 107.859 
+
+---CLIENT 1 --- : Training Epoch: 3 done.  Loss: 0.235, Prec@1: 0.928, Prec@3: 0.643, train_time = 78.360 
+
+---CLIENT 2 --- : Training Epoch: 3 done.  Loss: 0.235, Prec@1: 0.926, Prec@3: 0.649, train_time = 87.070 
+
+---CLIENT 4 --- : Training Epoch: 3 done.  Loss: 0.236, Prec@1: 0.924, Prec@3: 0.643, train_time = 89.676 
+

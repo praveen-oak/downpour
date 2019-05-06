@@ -1,0 +1,34 @@
+[c37-01:48518] 7 more processes have sent help message help-opal-runtime.txt / opal_init:warn-fork
+[c37-01:48518] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+lab4_singlenode.py:213: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  prec_1_tensor = torch.tensor(samples_seen*precisions_1.avg)
+lab4_singlenode.py:214: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  prec_3_tensor = torch.tensor(samples_seen*precisions_k.avg)
+lab4_singlenode.py:213: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  prec_1_tensor = torch.tensor(samples_seen*precisions_1.avg)
+lab4_singlenode.py:214: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  prec_3_tensor = torch.tensor(samples_seen*precisions_k.avg)
+lab4_singlenode.py:213: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  prec_1_tensor = torch.tensor(samples_seen*precisions_1.avg)
+lab4_singlenode.py:214: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  prec_3_tensor = torch.tensor(samples_seen*precisions_k.avg)
+lab4_singlenode.py:213: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  prec_1_tensor = torch.tensor(samples_seen*precisions_1.avg)
+lab4_singlenode.py:214: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  prec_3_tensor = torch.tensor(samples_seen*precisions_k.avg)
+lab4_singlenode.py:213: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  prec_1_tensor = torch.tensor(samples_seen*precisions_1.avg)
+lab4_singlenode.py:214: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  prec_3_tensor = torch.tensor(samples_seen*precisions_k.avg)
+lab4_singlenode.py:213: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  prec_1_tensor = torch.tensor(samples_seen*precisions_1.avg)
+lab4_singlenode.py:214: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  prec_3_tensor = torch.tensor(samples_seen*precisions_k.avg)
+lab4_singlenode.py:213: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  prec_1_tensor = torch.tensor(samples_seen*precisions_1.avg)
+lab4_singlenode.py:214: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  prec_3_tensor = torch.tensor(samples_seen*precisions_k.avg)
+lab4_singlenode.py:213: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  prec_1_tensor = torch.tensor(samples_seen*precisions_1.avg)
+lab4_singlenode.py:214: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  prec_3_tensor = torch.tensor(samples_seen*precisions_k.avg)

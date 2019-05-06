@@ -1,0 +1,226 @@
+---SERVER--- : Samples per worker = 1875.0, batches_per_worker = 8, updates_per_worker = 25, total_updates = 400
+--------------------------------------------------------------------------
+A process has executed an operation involving a call to the
+"fork()" system call to create a child process.  Open MPI is currently
+operating in a condition that could result in memory corruption or
+other system errors; your job may hang, crash, or produce silent
+data corruption.  The use of fork() (or system() or other calls that
+create child processes) is strongly discouraged.
+
+The process that invoked fork was:
+
+  Local host:          [[18536,1],16] (PID 44773)
+
+If you are *absolutely sure* that your application will successfully
+and correctly survive a call to fork(), you may disable this warning
+by setting the mpi_warn_on_fork MCA parameter to 0.
+--------------------------------------------------------------------------
+---CLIENT 7 --- : Training Epoch: 0 done.  Loss: 1.143, Prec@1: 0.733, Prec@3: 0.486, train_time = 20.687 
+
+---CLIENT 5 --- : Training Epoch: 0 done.  Loss: 0.720, Prec@1: 0.758, Prec@3: 0.516, train_time = 21.285 
+
+---CLIENT 13 --- : Training Epoch: 0 done.  Loss: 0.964, Prec@1: 0.755, Prec@3: 0.490, train_time = 21.265 
+
+---CLIENT 1 --- : Training Epoch: 0 done.  Loss: 0.692, Prec@1: 0.715, Prec@3: 0.491, train_time = 21.487 
+
+---CLIENT 2 --- : Training Epoch: 0 done.  Loss: 0.816, Prec@1: 0.664, Prec@3: 0.453, train_time = 21.526 
+
+---CLIENT 10 --- : Training Epoch: 0 done.  Loss: 0.960, Prec@1: 0.711, Prec@3: 0.476, train_time = 21.888 
+
+---CLIENT 9 --- : Training Epoch: 0 done.  Loss: 0.646, Prec@1: 0.742, Prec@3: 0.514, train_time = 22.768 
+
+---CLIENT 12 --- : Training Epoch: 0 done.  Loss: 1.068, Prec@1: 0.613, Prec@3: 0.433, train_time = 23.668 
+
+---CLIENT 4 --- : Training Epoch: 0 done.  Loss: 1.113, Prec@1: 0.616, Prec@3: 0.427, train_time = 23.724 
+
+---CLIENT 3 --- : Training Epoch: 0 done.  Loss: 0.846, Prec@1: 0.641, Prec@3: 0.466, train_time = 24.001 
+
+---CLIENT 6 --- : Training Epoch: 0 done.  Loss: 0.730, Prec@1: 0.605, Prec@3: 0.452, train_time = 24.495 
+
+---CLIENT 11 --- : Training Epoch: 0 done.  Loss: 0.751, Prec@1: 0.595, Prec@3: 0.465, train_time = 24.494 
+
+---CLIENT 8 --- : Training Epoch: 0 done.  Loss: 0.770, Prec@1: 0.639, Prec@3: 0.478, train_time = 24.877 
+
+---CLIENT 14 --- : Training Epoch: 0 done.  Loss: 0.971, Prec@1: 0.601, Prec@3: 0.448, train_time = 25.238 
+
+---CLIENT 15 --- : Training Epoch: 0 done.  Loss: 0.992, Prec@1: 0.619, Prec@3: 0.458, train_time = 25.525 
+
+---CLIENT 16 --- : Training Epoch: 0 done.  Loss: 0.599, Prec@1: 0.679, Prec@3: 0.503, train_time = 26.236 
+
+---CLIENT 7 --- : Training Epoch: 1 done.  Loss: 0.323, Prec@1: 0.816, Prec@3: 0.600, train_time = 20.096 
+
+---CLIENT 10 --- : Training Epoch: 1 done.  Loss: 0.305, Prec@1: 0.852, Prec@3: 0.611, train_time = 20.073 
+
+---CLIENT 13 --- : Training Epoch: 1 done.  Loss: 0.319, Prec@1: 0.840, Prec@3: 0.602, train_time = 20.719 
+
+---CLIENT 5 --- : Training Epoch: 1 done.  Loss: 0.327, Prec@1: 0.861, Prec@3: 0.612, train_time = 20.875 
+
+---CLIENT 2 --- : Training Epoch: 1 done.  Loss: 0.316, Prec@1: 0.869, Prec@3: 0.602, train_time = 20.953 
+
+---CLIENT 1 --- : Training Epoch: 1 done.  Loss: 0.314, Prec@1: 0.882, Prec@3: 0.597, train_time = 21.048 
+
+---CLIENT 9 --- : Training Epoch: 1 done.  Loss: 0.626, Prec@1: 0.878, Prec@3: 0.604, train_time = 22.526 
+
+---CLIENT 6 --- : Training Epoch: 1 done.  Loss: 0.626, Prec@1: 0.867, Prec@3: 0.601, train_time = 22.891 
+
+---CLIENT 4 --- : Training Epoch: 1 done.  Loss: 0.834, Prec@1: 0.831, Prec@3: 0.588, train_time = 23.472 
+
+---CLIENT 8 --- : Training Epoch: 1 done.  Loss: 1.250, Prec@1: 0.839, Prec@3: 0.611, train_time = 23.651 
+
+---CLIENT 3 --- : Training Epoch: 1 done.  Loss: 1.600, Prec@1: 0.827, Prec@3: 0.596, train_time = 23.801 
+
+---CLIENT 12 --- : Training Epoch: 1 done.  Loss: 1.731, Prec@1: 0.819, Prec@3: 0.602, train_time = 23.828 
+
+---CLIENT 11 --- : Training Epoch: 1 done.  Loss: 1.085, Prec@1: 0.822, Prec@3: 0.593, train_time = 24.429 
+
+---CLIENT 16 --- : Training Epoch: 1 done.  Loss: 1.826, Prec@1: 0.800, Prec@3: 0.597, train_time = 25.526 
+
+---CLIENT 15 --- : Training Epoch: 1 done.  Loss: 1.056, Prec@1: 0.844, Prec@3: 0.603, train_time = 25.452 
+
+---CLIENT 14 --- : Training Epoch: 1 done.  Loss: 1.339, Prec@1: 0.825, Prec@3: 0.621, train_time = 27.074 
+
+---CLIENT 13 --- : Training Epoch: 2 done.  Loss: 0.285, Prec@1: 0.921, Prec@3: 0.615, train_time = 20.926 
+
+---CLIENT 7 --- : Training Epoch: 2 done.  Loss: 0.279, Prec@1: 0.920, Prec@3: 0.616, train_time = 21.022 
+
+---CLIENT 5 --- : Training Epoch: 2 done.  Loss: 0.279, Prec@1: 0.930, Prec@3: 0.630, train_time = 21.295 
+
+---CLIENT 2 --- : Training Epoch: 2 done.  Loss: 0.283, Prec@1: 0.924, Prec@3: 0.614, train_time = 21.488 
+
+---CLIENT 1 --- : Training Epoch: 2 done.  Loss: 0.277, Prec@1: 0.928, Prec@3: 0.620, train_time = 21.681 
+
+---CLIENT 6 --- : Training Epoch: 2 done.  Loss: 0.277, Prec@1: 0.921, Prec@3: 0.630, train_time = 22.410 
+
+---CLIENT 9 --- : Training Epoch: 2 done.  Loss: 0.271, Prec@1: 0.930, Prec@3: 0.624, train_time = 22.648 
+
+---CLIENT 10 --- : Training Epoch: 2 done.  Loss: 0.270, Prec@1: 0.932, Prec@3: 0.629, train_time = 22.751 
+
+---CLIENT 4 --- : Training Epoch: 2 done.  Loss: 0.271, Prec@1: 0.921, Prec@3: 0.629, train_time = 23.712 
+
+---CLIENT 12 --- : Training Epoch: 2 done.  Loss: 0.275, Prec@1: 0.921, Prec@3: 0.632, train_time = 23.729 
+
+---CLIENT 3 --- : Training Epoch: 2 done.  Loss: 0.270, Prec@1: 0.931, Prec@3: 0.637, train_time = 23.932 
+
+---CLIENT 8 --- : Training Epoch: 2 done.  Loss: 0.269, Prec@1: 0.935, Prec@3: 0.641, train_time = 24.014 
+
+---CLIENT 11 --- : Training Epoch: 2 done.  Loss: 0.276, Prec@1: 0.928, Prec@3: 0.635, train_time = 24.225 
+
+---CLIENT 14 --- : Training Epoch: 2 done.  Loss: 0.275, Prec@1: 0.929, Prec@3: 0.633, train_time = 25.012 
+
+---CLIENT 15 --- : Training Epoch: 2 done.  Loss: 0.268, Prec@1: 0.933, Prec@3: 0.644, train_time = 25.519 
+
+---CLIENT 16 --- : Training Epoch: 2 done.  Loss: 0.279, Prec@1: 0.916, Prec@3: 0.622, train_time = 25.612 
+
+---CLIENT 13 --- : Training Epoch: 3 done.  Loss: 0.281, Prec@1: 0.921, Prec@3: 0.642, train_time = 21.656 
+
+---CLIENT 2 --- : Training Epoch: 3 done.  Loss: 0.280, Prec@1: 0.925, Prec@3: 0.635, train_time = 21.720 
+
+---CLIENT 7 --- : Training Epoch: 3 done.  Loss: 0.278, Prec@1: 0.921, Prec@3: 0.643, train_time = 21.721 
+
+---CLIENT 5 --- : Training Epoch: 3 done.  Loss: 0.274, Prec@1: 0.929, Prec@3: 0.653, train_time = 21.930 
+
+---CLIENT 1 --- : Training Epoch: 3 done.  Loss: 0.275, Prec@1: 0.927, Prec@3: 0.635, train_time = 22.188 
+
+---CLIENT 6 --- : Training Epoch: 3 done.  Loss: 0.280, Prec@1: 0.921, Prec@3: 0.643, train_time = 22.995 
+
+---CLIENT 10 --- : Training Epoch: 3 done.  Loss: 0.268, Prec@1: 0.932, Prec@3: 0.649, train_time = 23.096 
+
+---CLIENT 9 --- : Training Epoch: 3 done.  Loss: 0.270, Prec@1: 0.930, Prec@3: 0.642, train_time = 23.358 
+
+---CLIENT 4 --- : Training Epoch: 3 done.  Loss: 0.272, Prec@1: 0.920, Prec@3: 0.638, train_time = 23.977 
+
+---CLIENT 12 --- : Training Epoch: 3 done.  Loss: 0.274, Prec@1: 0.922, Prec@3: 0.651, train_time = 24.101 
+
+---CLIENT 16 --- : Training Epoch: 3 done.  Loss: 0.277, Prec@1: 0.916, Prec@3: 0.628, train_time = 24.547 
+
+---CLIENT 3 --- : Training Epoch: 3 done.  Loss: 0.270, Prec@1: 0.932, Prec@3: 0.652, train_time = 24.553 
+
+---CLIENT 11 --- : Training Epoch: 3 done.  Loss: 0.274, Prec@1: 0.928, Prec@3: 0.646, train_time = 24.661 
+
+---CLIENT 15 --- : Training Epoch: 3 done.  Loss: 0.267, Prec@1: 0.932, Prec@3: 0.651, train_time = 25.037 
+
+---CLIENT 14 --- : Training Epoch: 3 done.  Loss: 0.274, Prec@1: 0.928, Prec@3: 0.643, train_time = 25.652 
+
+---CLIENT 8 --- : Training Epoch: 3 done.  Loss: 0.272, Prec@1: 0.934, Prec@3: 0.655, train_time = 25.642 
+
+---CLIENT 10 --- : Training Epoch: 4 done.  Loss: 0.261, Prec@1: 0.930, Prec@3: 0.647, train_time = 20.523 
+
+---CLIENT 7 --- : Training Epoch: 4 done.  Loss: 0.269, Prec@1: 0.919, Prec@3: 0.641, train_time = 20.583 
+
+---CLIENT 13 --- : Training Epoch: 4 done.  Loss: 0.272, Prec@1: 0.920, Prec@3: 0.644, train_time = 20.863 
+
+---CLIENT 5 --- : Training Epoch: 4 done.  Loss: 0.268, Prec@1: 0.929, Prec@3: 0.652, train_time = 20.914 
+
+---CLIENT 1 --- : Training Epoch: 4 done.  Loss: 0.266, Prec@1: 0.930, Prec@3: 0.638, train_time = 21.132 
+
+---CLIENT 2 --- : Training Epoch: 4 done.  Loss: 0.270, Prec@1: 0.927, Prec@3: 0.637, train_time = 22.025 
+
+---CLIENT 6 --- : Training Epoch: 4 done.  Loss: 0.269, Prec@1: 0.921, Prec@3: 0.644, train_time = 22.152 
+
+---CLIENT 9 --- : Training Epoch: 4 done.  Loss: 0.261, Prec@1: 0.930, Prec@3: 0.644, train_time = 22.450 
+
+---CLIENT 12 --- : Training Epoch: 4 done.  Loss: 0.263, Prec@1: 0.922, Prec@3: 0.651, train_time = 23.253 
+
+---CLIENT 4 --- : Training Epoch: 4 done.  Loss: 0.263, Prec@1: 0.919, Prec@3: 0.638, train_time = 23.464 
+
+---CLIENT 3 --- : Training Epoch: 4 done.  Loss: 0.265, Prec@1: 0.930, Prec@3: 0.650, train_time = 23.549 
+
+---CLIENT 8 --- : Training Epoch: 4 done.  Loss: 0.263, Prec@1: 0.932, Prec@3: 0.656, train_time = 23.975 
+
+---CLIENT 15 --- : Training Epoch: 4 done.  Loss: 0.261, Prec@1: 0.933, Prec@3: 0.653, train_time = 24.218 
+
+---CLIENT 11 --- : Training Epoch: 4 done.  Loss: 0.267, Prec@1: 0.925, Prec@3: 0.644, train_time = 24.435 
+
+---CLIENT 16 --- : Training Epoch: 4 done.  Loss: 0.271, Prec@1: 0.916, Prec@3: 0.629, train_time = 26.212 
+
+---CLIENT 14 --- : Training Epoch: 4 done.  Loss: 0.267, Prec@1: 0.929, Prec@3: 0.646, train_time = 26.302 
+
+---CLIENT 16 --- : Last epoch stats : Loss: 0.271, Prec@1: 0.916, Prec@3: 0.629, total_exec_time = 131.296
+---CLIENT 4 --- : Last epoch stats : Loss: 0.263, Prec@1: 0.919, Prec@3: 0.638, total_exec_time = 131.305
+---CLIENT 5 --- : Last epoch stats : Loss: 0.268, Prec@1: 0.929, Prec@3: 0.652, total_exec_time = 131.312
+---CLIENT 6 --- : Last epoch stats : Loss: 0.269, Prec@1: 0.921, Prec@3: 0.644, total_exec_time = 131.320
+---CLIENT 7 --- : Last epoch stats : Loss: 0.269, Prec@1: 0.919, Prec@3: 0.641, total_exec_time = 131.328
+---CLIENT 8 --- : Last epoch stats : Loss: 0.263, Prec@1: 0.932, Prec@3: 0.656, total_exec_time = 131.336
+---CLIENT 9 --- : Last epoch stats : Loss: 0.261, Prec@1: 0.930, Prec@3: 0.644, total_exec_time = 131.344
+---CLIENT 10 --- : Last epoch stats : Loss: 0.261, Prec@1: 0.930, Prec@3: 0.647, total_exec_time = 131.352
+---CLIENT 11 --- : Last epoch stats : Loss: 0.267, Prec@1: 0.925, Prec@3: 0.644, total_exec_time = 131.360
+---CLIENT 12 --- : Last epoch stats : Loss: 0.263, Prec@1: 0.922, Prec@3: 0.651, total_exec_time = 131.369
+---CLIENT 13 --- : Last epoch stats : Loss: 0.272, Prec@1: 0.920, Prec@3: 0.644, total_exec_time = 131.376
+---CLIENT 14 --- : Last epoch stats : Loss: 0.267, Prec@1: 0.929, Prec@3: 0.646, total_exec_time = 131.383
+---CLIENT 15 --- : Last epoch stats : Loss: 0.261, Prec@1: 0.933, Prec@3: 0.653, total_exec_time = 131.392
+---CLIENT 1 --- : Last epoch stats : Loss: 0.266, Prec@1: 0.930, Prec@3: 0.638, total_exec_time = 131.400
+---CLIENT 2 --- : Last epoch stats : Loss: 0.270, Prec@1: 0.927, Prec@3: 0.637, total_exec_time = 131.408
+---SERVER--- : Work done. Exiting.
+---CLIENT 3 --- : Last epoch stats : Loss: 0.265, Prec@1: 0.930, Prec@3: 0.650, total_exec_time = 131.417
+---CLIENT 9 --- : All reduce results weighted_loss = 0.266, precision_1 = 0.926, precision_3 = 0.645
+---CLIENT 4 --- : All reduce results weighted_loss = 0.266, precision_1 = 0.926, precision_3 = 0.645
+---CLIENT 10 --- : All reduce results weighted_loss = 0.266, precision_1 = 0.926, precision_3 = 0.645
+---CLIENT 3 --- : All reduce results weighted_loss = 0.266, precision_1 = 0.926, precision_3 = 0.645
+---CLIENT 6 --- : All reduce results weighted_loss = 0.266, precision_1 = 0.926, precision_3 = 0.645
+---CLIENT 1 --- : All reduce results weighted_loss = 0.266, precision_1 = 0.926, precision_3 = 0.645
+---CLIENT 2 --- : All reduce results weighted_loss = 0.266, precision_1 = 0.926, precision_3 = 0.645
+---CLIENT {} --- : Done with processing for worker. EXITING
+---CLIENT 12 --- : All reduce results weighted_loss = 0.266, precision_1 = 0.926, precision_3 = 0.645
+---CLIENT {} --- : Done with processing for worker. EXITING
+---CLIENT {} --- : Done with processing for worker. EXITING
+---CLIENT 7 --- : All reduce results weighted_loss = 0.266, precision_1 = 0.926, precision_3 = 0.645
+---CLIENT {} --- : Done with processing for worker. EXITING
+---CLIENT 16 --- : All reduce results weighted_loss = 0.266, precision_1 = 0.926, precision_3 = 0.645
+---CLIENT {} --- : Done with processing for worker. EXITING
+---CLIENT 5 --- : All reduce results weighted_loss = 0.266, precision_1 = 0.926, precision_3 = 0.645
+---CLIENT {} --- : Done with processing for worker. EXITING
+---CLIENT {} --- : Done with processing for worker. EXITING
+---CLIENT 13 --- : All reduce results weighted_loss = 0.266, precision_1 = 0.926, precision_3 = 0.645
+---CLIENT {} --- : Done with processing for worker. EXITING
+---CLIENT 15 --- : All reduce results weighted_loss = 0.266, precision_1 = 0.926, precision_3 = 0.645
+---CLIENT {} --- : Done with processing for worker. EXITING
+---CLIENT {} --- : Done with processing for worker. EXITING
+---CLIENT {} --- : Done with processing for worker. EXITING
+---CLIENT 8 --- : All reduce results weighted_loss = 0.266, precision_1 = 0.926, precision_3 = 0.645
+---CLIENT {} --- : Done with processing for worker. EXITING
+---CLIENT 11 --- : All reduce results weighted_loss = 0.266, precision_1 = 0.926, precision_3 = 0.645
+---CLIENT {} --- : Done with processing for worker. EXITING
+---CLIENT 14 --- : All reduce results weighted_loss = 0.266, precision_1 = 0.926, precision_3 = 0.645
+---CLIENT {} --- : Done with processing for worker. EXITING
+---CLIENT {} --- : Done with processing for worker. EXITING
+---CLIENT {} --- : Done with processing for worker. EXITING

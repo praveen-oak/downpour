@@ -1,10 +1,10 @@
 #!/bin/bash
 
-#SBATCH --job-name=4_workers_5_steps
+#SBATCH --job-name=3_workers_5_steps
 #SBATCH --nodes=5
 #SBATCH --ntasks-per-node=1
-#SBATCH --output=4_workers_5_steps.out
-#SBATCH --error=4_workers_5_steps.error
+#SBATCH --output=3_workers_5_steps.out
+#SBATCH --error=3_workers_5_steps.error
 #SBATCH --cpus-per-task=1
 #SBATCH --time=02:00:00
 

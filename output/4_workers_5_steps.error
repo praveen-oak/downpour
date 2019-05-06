@@ -1,0 +1,2 @@
+[c32-03:39454] 3 more processes have sent help message help-opal-runtime.txt / opal_init:warn-fork
+[c32-03:39454] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages

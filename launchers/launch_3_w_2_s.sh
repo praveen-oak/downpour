@@ -1,17 +1,17 @@
 #!/bin/bash
 
-#SBATCH --job-name=16_workers_2_steps
-#SBATCH --nodes=17
+#SBATCH --job-name=3_workers_2_steps
+#SBATCH --nodes=4
 #SBATCH --ntasks-per-node=1
-#SBATCH --output=16_workers_2_steps.out
-#SBATCH --error=16_workers_2_steps.error
+#SBATCH --output=3_workers_2_steps.out
+#SBATCH --error=3_workers_2_steps.error
 #SBATCH --cpus-per-task=1
 #SBATCH --time=02:00:00
 
 use_cuda='false'
 workers=8
 opt='adam'
-num_proc=17 # number of processors, must be equal to #SBATCH --nodes
+num_proc=4 # number of processors, must be equal to #SBATCH --nodes
 out_file=log-$num_proc-$use_cuda-$workers-$opt
 
 module load openmpi/intel/2.0.3

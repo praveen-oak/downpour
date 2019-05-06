@@ -25,7 +25,8 @@ class KaggleAmazonDataset(Dataset):
 
     def __init__(self, csv_path, img_path, img_ext, rank, chunk_size, transform=None):
 
-        start_index = (rank-1)*chunk_size + 1 #workers rank starts from 1, row 0 of data are column heads
+        #start index will be based on rank, each worker will process a chunk size worth of data
+        start_index = (rank-1)*chunk_size + 1 
         tmp_df = pd.read_csv(csv_path, names = ["image_name","tags"], skiprows=int(start_index), nrows=int(chunk_size))
 
         self.img_path = img_path
@@ -166,6 +167,8 @@ def run_mpi_worker(train_data, img_path, img_ext, model, workers, rank, world_si
             batch_times.update(time.monotonic() - t_batch)
 
             samples_seen = samples_seen + len(target)
+
+            #for each round, accumulate the grad tensor in a separate variable
             accumulate_grad_tensor(model, grad_tensor)
             
             topk=3
@@ -188,18 +191,25 @@ def run_mpi_worker(train_data, img_path, img_ext, model, workers, rank, world_si
 
             t_batch = time.monotonic()
 
+            #if a steps number of interations have passed since last talking to param server
+            #1. Send the accumulated grad tensor
+            #2. Receive the latest grad tensor from the server
             if total_steps % steps == 0:
                 temp_tensor = serialize_grad_tensor(grad_tensor)
                 dist.send(tensor=temp_tensor, dst=0)
                 dist.recv(tensor=temp_tensor)
                 deserialize_model_params(model, temp_tensor, grads=False)
+                #re initialize the grad tensor back to zero
                 grad_tensor = init_grad_tensor(model)
 
             total_steps = total_steps + 1
         train_time = time.monotonic() - t_train
         print('---CLIENT {} --- : Training Epoch: {} done.  Loss: {:.3f}, Prec@1: {:.3f}, Prec@3: {:.3f}, train_time = {:.3f} \n'.format(rank, epoch, losses.avg, precisions_1.avg, precisions_k.avg, train_time))
 
+        #after each epoch sync models of all workers
         dist.barrier(workers_group)
+        #send a zero tensor to server as this will ensure that it does not change 
+        #any data on server but the client will receive the latest model from client
         grad_tensor = init_grad_tensor(model)
         temp_tensor = serialize_grad_tensor(grad_tensor)
         dist.send(tensor=temp_tensor, dst=0)
@@ -226,6 +236,7 @@ def run_mpi_worker(train_data, img_path, img_ext, model, workers, rank, world_si
     print("---CLIENT {} --- : Done with processing for worker. EXITING")
 
 def run_server(world_size, batch_size, model, steps):
+    #calculate number of times worker will talk to server
     samples_per_worker = constants.TRAINING_SIZE/(world_size-1)
     batches_per_worker = math.ceil(samples_per_worker/batch_size)
     updates_per_worker = (math.ceil(batches_per_worker/steps) + 1) * 5 #five epochs
@@ -239,6 +250,10 @@ def run_server(world_size, batch_size, model, steps):
     temp_tensor = serialize_model(model, grads=True)
     updates = 0
     while updates < total_updates:
+        #each time server is contacted, it will
+        #1. update the model with accumulated data received from client
+        #2. Send back the latest model to the client that sent the accumulated gradient
+        #go back to waitng for client messages
         optimizer.zero_grad()
         sender = dist.recv(tensor=temp_tensor)
         deserialize_model_params(model, temp_tensor, grads=True)
@@ -250,14 +265,18 @@ def run_server(world_size, batch_size, model, steps):
     print("---SERVER--- : Work done. Exiting.")
 
 def serialize_model(model, grads=False):
-    m_parameter = torch.Tensor([0])
+    send_tensor = torch.Tensor([0])
+    #for each model, get the data, then flatten the data/grad tensor, append it to the main tensor
     for parameter in list(model.parameters()):
         if grads:
-            m_parameter = torch.cat((m_parameter, parameter.grad.data.view(-1)))
+            send_tensor = torch.cat((send_tensor, parameter.grad.data.view(-1)))
         else:
-            m_parameter = torch.cat((m_parameter, parameter.data.view(-1)))
-    return m_parameter[1:]
+            send_tensor = torch.cat((send_tensor, parameter.data.view(-1)))
 
+    #0th index is dropped as it is the initialization value 0 which was added while creating the tensor
+    return send_tensor[1:]
+
+#opposite of the serialize method
 def deserialize_model_params(model, parameter_update, grads=False):
     current_index = 0 # keep track of where to read from parameter_update
     if grads:
@@ -273,7 +292,7 @@ def deserialize_model_params(model, parameter_update, grads=False):
             parameter.data.copy_(parameter_update[current_index:current_index+numel].view(size))
             current_index += numel
 
-
+#create an 0 tensor in a grad tensor array based on the model
 def init_grad_tensor(model):
     grad_tensor_array = []
     for param in model.parameters():
@@ -281,6 +300,7 @@ def init_grad_tensor(model):
 
     return grad_tensor_array
 
+#accumulates the grad tensors
 def accumulate_grad_tensor(model, grad_tensor):
     index = 0
     for param in model.parameters():
@@ -288,11 +308,10 @@ def accumulate_grad_tensor(model, grad_tensor):
         index = index + 1
 
 def serialize_grad_tensor(grad_tensor):
-    m_parameter = torch.Tensor([0])
-
+    param = torch.Tensor([0])
     for value in grad_tensor:
-        m_parameter = torch.cat((m_parameter, value.view(-1)))
-    return m_parameter[1:]
+        param = torch.cat((param, value.view(-1)))
+    return param[1:]
 
 
 if __name__ == '__main__':

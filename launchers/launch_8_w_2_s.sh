@@ -17,4 +17,4 @@ out_file=log-$num_proc-$use_cuda-$workers-$opt
 module load openmpi/intel/2.0.3
 module load cuda/9.2.88
 
-mpirun -np $num_proc python  lab4.py --steps 2 --data_path '/scratch/gd66/spring2019/lab4/kaggleamazon/' --disable_cuda  --workers $workers
+mpirun -np $num_proc python  lab4_ppo208.py --steps 2 --data_path '/scratch/gd66/spring2019/lab4/kaggleamazon/' --disable_cuda  --workers $workers
