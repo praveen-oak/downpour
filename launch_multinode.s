@@ -1,10 +1,10 @@
 #!/bin/bash
 
-#SBATCH --job-name=lab4i
+#SBATCH --job-name=downpour
 #SBATCH --nodes=3
 #SBATCH --ntasks-per-node=1
-#SBATCH --output=lab4.out
-#SBATCH --error=lab4.error
+#SBATCH --output=downpour.out
+#SBATCH --error=downpour.error
 #SBATCH --cpus-per-task=1
 #SBATCH --time=04:00:00
 
