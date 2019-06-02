@@ -17,9 +17,8 @@ import torch.nn.functional as F
 import argparse
 
 import torch.distributed as dist
-import constants
 
-
+TRAINING_SIZE = 30000
 
 class KaggleAmazonDataset(Dataset):
 
@@ -112,7 +111,7 @@ def run_mpi_worker(train_data, img_path, img_ext, model, workers, rank, world_si
     t_exec = time.monotonic()
     transformations = transforms.Compose([transforms.Resize(32), transforms.ToTensor()])
 
-    chunk_size = constants.TRAINING_SIZE/(world_size-1)
+    chunk_size = TRAINING_SIZE/(world_size-1)
     dset_train = KaggleAmazonDataset(train_data, img_path, img_ext,rank, chunk_size, transformations)
 
     train_loader = DataLoader(dset_train,
@@ -237,7 +236,7 @@ def run_mpi_worker(train_data, img_path, img_ext, model, workers, rank, world_si
 
 def run_server(world_size, batch_size, model, steps):
     #calculate number of times worker will talk to server
-    samples_per_worker = constants.TRAINING_SIZE/(world_size-1)
+    samples_per_worker = TRAINING_SIZE/(world_size-1)
     batches_per_worker = math.ceil(samples_per_worker/batch_size)
     updates_per_worker = (math.ceil(batches_per_worker/steps) + 1) * 5 #five epochs
     total_updates = updates_per_worker*(world_size-1)
