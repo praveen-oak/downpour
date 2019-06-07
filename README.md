@@ -7,9 +7,9 @@ https://static.googleusercontent.com/media/research.google.com/en//archive/large
 
 Requirements:
 The project has the following dependencies
-Python 3.6
-cuda/9.2.88
-openmpi/intel/2.0.3
+Python 3.6,
+cuda/9.2.88,
+openmpi/intel/2.0.3.
 
 In addition pytorch needs to be compiled with the cuda and openmpi libraries. Please refer online resources and guides on how to
 accomplish this.
@@ -21,10 +21,10 @@ If your compilation was successful, then the command should print out the follow
 To test if MPI is setup you can run the following
 mpirun -np 4python -c 'import torch.distributed as dist; dist.init_process_group(backend="mpi"),print("hello", dist.get_rank())'
 It should print the following on the console
-hello 1
-hello 3
-hello 2
-hello 0
+hello 1 \n
+hello 3 \n
+hello 2 \n
+hello 0 \n
 
 If you are running on a standalone node(or personal computer) with multiple GPU cores, no additional softwares are required.
 If you are running it on a cluster, please use a cluster batch management tool. I have used my university's HPC cluster which 
