@@ -5,7 +5,6 @@ import time
 import csv
 import random
 import pandas as pd
-#from torch import np
 import numpy as np
 
 import torch
@@ -112,7 +111,6 @@ def run_mpi_worker(train_data, img_path, img_ext, model, workers, rank, world_si
     transformations = transforms.Compose([transforms.Resize(32), transforms.ToTensor()])
 
     chunk_size = constants.TRAINING_SIZE/(world_size-1)
-    # chunk_size = 1000
     dset_train = KaggleAmazonDataset(train_data, img_path, img_ext,rank, chunk_size, transformations)
 
 
@@ -148,7 +146,6 @@ def run_mpi_worker(train_data, img_path, img_ext, model, workers, rank, world_si
     weighted_loss = torch.div(loss_tensor, samples_seen_tensor)
 
     print("Weighted loss from worker = "+str(rank)+ " is "+str(weighted_loss))
-    # print('Final Average Times: Total: {:.3f}, Avg-Batch: {:.4f}, Avg-Loader: {:.4f}\n'.format(np.average(train_times), np.average(batch_times), np.average(loader_times)))
 
 def serialize_model(model, grads=False):
     m_parameter = torch.Tensor([0])
@@ -189,15 +186,10 @@ def run_server(world_size, batch_size, model):
         print("------Server : Waiting for messages from clients")
         sender = dist.recv(tensor=temp_tensor)
         print("------Server : Received message from client with rank : "+str(sender))
-        # # deserialize_model_params(model, temp_grad_buffer, grads=False)
-        # print("------Server : Updated params with data from client")
         optimizer.step()
         temp_tensor = serialize_model(model, grads=False)
         # print("------Server : Sending back data to client with rank : "+str(sender))
         dist.send(tensor=temp_tensor, dst=sender)
-        # tensor = torch.zeros(600000)
-        # sender = dist.recv(tensor=tensor)
-        # dist.send(tensor=tensor, dst=sender)
 
     
 
