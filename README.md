@@ -21,10 +21,10 @@ If your compilation was successful, then the command should print out the follow
 To test if MPI is setup you can run the following
 mpirun -np 4python -c 'import torch.distributed as dist; dist.init_process_group(backend="mpi"),print("hello", dist.get_rank())'
 It should print the following on the console
-hello 1 \n
-hello 3 \n
-hello 2 \n
-hello 0 \n
+hello 1 
+hello 3 
+hello 2 
+hello 0 
 
 If you are running on a standalone node(or personal computer) with multiple GPU cores, no additional softwares are required.
 If you are running it on a cluster, please use a cluster batch management tool. I have used my university's HPC cluster which 
